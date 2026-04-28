@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Focus Mode",
+  "version": "0.0.1",
+  "description": "Nothing fancy, just a simple chrome extension that helps you focus",
+  "icons": {
+    "48": "images/dog1.jpg",
+    "128": "images/dog2.jpg"
+  },
+  "action" : {
+    "default_popup" : "homepage.html"
+  },
+
+  "background" : {
+    "service_worker" : "background.js"
+  },
+
+  "content_scripts" : [
+    {
+        "js" : [
+            "main.js"
+        ],
+        "matches" : [
+            "https://*/*"
+        ]
+    }
+  ],
+
+  "host_permissions" : [
+    "https://*/*"
+  ],
+  "permissions" : [
+    "storage",
+    "activeTab",
+    "scripting",
+    "tabs"
+  ]
+}

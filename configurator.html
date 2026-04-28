@@ -3,13 +3,35 @@
     <head>
         <title>Configurator Page</title>
         <link rel="stylesheet" href="style.css">
+        <script src="configurator.js" defer></script>
     </head>
     <body>
         <a href="homepage.html"><div class="floatingBackButton"></div></a>
         <div class="maindiv">
             <div class="headingtext">
-                Config your focus
+                Configure focus!
             </div>
+            <div>block the following common distractions </div>
+            <div>
+                <table>
+                    <tr>
+                        <td><label for="youtube">Youtube</label></td>
+                        <td></td>
+                        <td><input type="checkbox" name="youtube" value="youtube" id="youtube" ><br></td>
+                    </tr>
+                    <tr>
+                        <td><label for="prime">Prime video</label></td>
+                        <td></td>
+                        <td><input type="checkbox" name="primevideo" value="primevideo" id="primevideo" ></td>
+                    </tr>
+                    <tr>
+                        <td><label for="reddit">Reddit</label></td>
+                        <td></td>
+                        <td><input type="checkbox" name="reddit" value="reddit" id="reddit" ></td>
+                    </tr>
+                </table>
+            </div>
+            <div><button id="newuser">New user trigger</button></div>
         </div>
     </body>
 </html>

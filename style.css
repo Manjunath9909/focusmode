@@ -1,8 +1,6 @@
 body
 {
     margin: 0px;
-    border: 2px solid black;
-    border-radius: 20px;
 }
 canvas {
     background-color: transparent;
@@ -18,7 +16,6 @@ canvas {
     flex-direction: column;
     row-gap: 15px;
     background-color: rgb(194, 142, 142);
-    border-radius: 20px;
 }
 
 .headingtext
@@ -34,6 +31,14 @@ canvas {
     height: 100px;
     width: 100px;
     box-shadow: 5px 5px;
+}
+
+.configbutton
+{
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
 }
 
 .floatingBackButton

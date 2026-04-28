@@ -19,14 +19,18 @@ function init()
     if (localStorage.getItem("redirectlist")  !== null)
     {
         globalVarBlocklist = JSON.parse(localStorage.getItem("redirectlist"));
+        chrome.runtime.sendMessage(globalVarBlocklist, (response) => {console.log(response.status)});
         console.log("local storage detected");
-        loadmydata();
     }
+    loadmydata();
 }
 
-//for debug only for now lol
+//for debug only for now - could be a quick reset feature later in life
 function newusernow()
 {
+    yt.checked = false;
+    prm.checked = false;
+    red.checked = false;
     localStorage.setItem("redirectlist", '{"redirectlist":[]}');
     init();
 }
@@ -60,6 +64,12 @@ function handleCheckbox(event)
 function storemydata()
 {
     localStorage.setItem("redirectlist" , JSON.stringify(globalVarBlocklist));
+    informWorkers();
+}
+
+function informWorkers()
+{
+    chrome.runtime.sendMessage(globalVarBlocklist, (response) => {console.log(response.status)});
 }
 
 function loadmydata()

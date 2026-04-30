@@ -14,6 +14,15 @@ document.addEventListener("DOMContentLoaded", init)
 
 var globalVarBlocklist = null;
 
+/*chrome.runtime.onMessage.addListner((message, sender, sendMessage) => {
+    console.log(message.request);
+    if (localStorage.getItem("redirectlist")  !== null)
+    {
+        globalVarBlocklist = JSON.parse(localStorage.getItem("redirectlist"));
+    }
+    sendMessage(globalVarBlocklist);
+});*/
+
 function init()
 {
     if (localStorage.getItem("redirectlist")  !== null)

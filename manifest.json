@@ -8,6 +8,11 @@
     "128": "images/dog2.jpg"
   },
   "action" : {
+    "default_icon" : {
+      "16": "images/dog1.jpg",
+      "24": "images/dog2.jpg"
+    },
+    "default_title" : "Focus Mode!",
     "default_popup" : "homepage.html"
   },
 
@@ -34,5 +39,11 @@
     "activeTab",
     "scripting",
     "tabs"
+  ],
+  "web_accessible_resources" : [
+    {
+      "resources" : ["focussed.html"],
+      "matches" : ["<all_urls>"]
+    }
   ]
 }

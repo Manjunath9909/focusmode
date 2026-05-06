@@ -59,6 +59,8 @@ function start(storedData)
     loopinterval = setInterval(myloop, 7000);
     workersCopyBlockList = JSON.parse(storedData) //some data we will be bringing forward. should be assigned here 
     chrome.storage.local.set({"status": true}).then(() => {console.log("Status saved");});
+    chrome.action.setBadgeText({text : "Active"})
+    chrome.action.setBadgeBackgroundColor({color:"green"});
 }
 
 function stop()
@@ -66,6 +68,8 @@ function stop()
     clearInterval(loopinterval);
     chrome.storage.local.set({"redirectlist": workersCopyBlockList}).then(() => {console.log("Data saved");});
     chrome.storage.local.set({"status": false}).then(() => {console.log("Status saved");});
+    chrome.action.setBadgeText({text : "Inactive"})
+    chrome.action.setBadgeBackgroundColor({color:"red"});
 }
 
 async function myloop()
@@ -83,13 +87,17 @@ function handleBlock(tab)
         var host = url.hostname;
         var websiteName = host.replace(/www.|developer./, "");
         websiteName = websiteName.replace(/.com|.org|.in|.tv/, "");
+
         //console.log(workersCopyBlockList.redirectlist);
         //console.log(websiteName);
+        
         //handle the blocking here 
         if (workersCopyBlockList.redirectlist.includes(websiteName))
         {
             console.log("This is a blocked website : "+websiteName);
-            chrome.tabs.update(tab.id, {url : "https://www.google.com"});
+
+            //redirect happens here 
+            chrome.tabs.update(tab.id, {url : chrome.runtime.getURL("focussed.html")});
         }
 
     } catch (error) {

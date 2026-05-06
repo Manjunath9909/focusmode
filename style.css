@@ -53,6 +53,12 @@ canvas {
     cursor:default;
 }
 
+textarea
+{
+    resize: vertical;
+    max-height: 150px;
+}
+
 .gap10px
 {
     height: 10px;

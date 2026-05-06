@@ -10,6 +10,9 @@ red.addEventListener("change", handleCheckbox);
 const newuser = document.getElementById("newuser");
 newuser.addEventListener("click", newusernow);
 
+const customMessage = document.getElementById("custommessage");
+customMessage.addEventListener("change", updateCustomMessage);
+
 document.addEventListener("DOMContentLoaded", init)
 
 var globalVarBlocklist = null;
@@ -22,6 +25,12 @@ var globalVarBlocklist = null;
     }
     sendMessage(globalVarBlocklist);
 });*/
+
+function updateCustomMessage()
+{
+    const customMess = document.getElementById("custommessage").value;
+    localStorage.setItem("custommessage", customMess);
+}
 
 function init()
 {
@@ -84,6 +93,8 @@ function informWorkers()
 function loadmydata()
 {
     const f = JSON.parse(localStorage.getItem("redirectlist"));
+    const m = localStorage.getItem("custommessage");
+    customMessage.value = m.trim();
     f.redirectlist.forEach(setchecks);
 }
 
